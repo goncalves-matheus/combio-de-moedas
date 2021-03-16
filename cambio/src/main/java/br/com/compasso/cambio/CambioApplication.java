@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CambioApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CambioApplication.class, args);
+		//SpringApplication.run(CambioApplication.class, args);
 	}
 
 }
