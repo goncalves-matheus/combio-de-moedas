@@ -14,12 +14,12 @@ public class ManipulaJson {
     public static Cotacao lerJson() throws IOException{
         HttpURLConnection novaConexao = new Conecta().conectar();
         BufferedReader entrada = new BufferedReader(new InputStreamReader(novaConexao.getInputStream()));
-        String inputLine;
-
+    
         StringBuilder resposta = new StringBuilder();
 
-        while ((inputLine = entrada.readLine()) != null) {
-            resposta.append(inputLine);
+        String linha;
+        while ((linha = entrada.readLine()) != null) {
+            resposta.append(linha);
         }
 
         entrada.close();
