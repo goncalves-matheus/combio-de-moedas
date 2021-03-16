@@ -1,10 +1,9 @@
 package br.com.compasso.cambio;
 
-import br.com.compasso.cambio.conexao.Conecta;
+import java.io.IOException;
+
 import br.com.compasso.cambio.manipulacao.Cotacao;
 import br.com.compasso.cambio.manipulacao.ManipulaJson;
-
-import java.io.IOException;
 
 public class TesteConexao {
     public static void main(String[] args) {
