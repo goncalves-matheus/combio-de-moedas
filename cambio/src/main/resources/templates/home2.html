@@ -1,0 +1,65 @@
+<html>
+    <head>  
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class= "card-header">Cambio de Moedas</div>
+            </div>
+            
+            <div class="row">
+
+                <div class="card col-4">
+                    <div class= "card-header">Dolar:</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div>Valor: <span th:text="${cotacao.getDolar}">1.0000</span></div>
+                                    <div>Base: <span th:text="${cotacao.getBase}">1.0000</span></div>
+                                    <div>Data: <span th:text="${cotacao.getData}">1.0000</span></div>
+                                </div>
+                                <div class="col-6">
+                                        <img th:src="${cotacao.getDolarImagem}" src="" class="img-thumbnail" alt="..."/>
+                                </div>     
+                            </div>
+                        </div>
+                </div> 
+
+                <div class="card col-4">
+                    <div class= "card-header">Real:</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div>Valor: <span th:text="${cotacao.getReal}">1.0000</span></div>
+                                    <div>Base: <span th:text="${cotacao.getBase}">1.0000</span></div>
+                                    <div>Data: <span th:text="${cotacao.getData}">1.0000</span></div>
+                                </div>
+                                <div class="col-6">
+                                        <img th:src="${cotacao.getRealImagem}" src="" class="img-thumbnail" alt="..."/>
+                                </div>     
+                            </div>
+                        </div>
+                </div> 
+
+                <div class="card col-4">
+                    <div class= "card-header">Bitcoin:</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div>Valor: <span th:text="${cotacao.getBitcoin}">1.0000</span></div>
+                                    <div>Base: <span th:text="${cotacao.getBase}">1.0000</span></div>
+                                    <div>Data: <span th:text="${cotacao.getData}">1.0000</span></div>
+                                </div>
+                                <div class="col-6">
+                                        <img th:src="${cotacao.getBitcoinImagem}" src="" class="img-thumbnail" alt="..."/>
+                                </div>     
+                            </div>
+                        </div>
+                </div> 
+
+            </div>
+        </div>
+    </body>
+</html>
