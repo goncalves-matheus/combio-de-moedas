@@ -1,4 +1,4 @@
-package br.com.compasso.cambio.conexao;
+package br.com.compasso.cambio.model.conexao;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

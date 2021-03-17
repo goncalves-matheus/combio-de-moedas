@@ -1,4 +1,4 @@
-package br.com.compasso.cambio.manipulacao;
+package br.com.compasso.cambio.model.manipula;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 
 import org.json.JSONObject;
 
-import br.com.compasso.cambio.conexao.Conecta;
+import br.com.compasso.cambio.model.conexao.Conecta;
 
 public class ManipulaJson {
     
