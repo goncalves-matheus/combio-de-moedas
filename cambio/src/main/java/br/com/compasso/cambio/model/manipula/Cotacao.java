@@ -8,6 +8,7 @@ public class Cotacao {
     Double real;
     Double bitcoin;
     String base;
+    String baseReal = "Real";
     LocalDate data;
 
     String bitcoinImagem = "https://s3.criptofacil.com/wp-content/uploads/2020/12/maior-gestora-mundo-diz-que-bitcoin-impactara-dolar.jpg";
@@ -24,24 +25,25 @@ public class Cotacao {
         this.base = base;
         this.data = LocalDate.parse(data,formatadorEntrada);
     }
+
     public Double converteEmReal(Double valorAConverter){
-        return this.real/valorAConverter;
+        return (this.real/valorAConverter);
     }
 
-    public Double getDolar() {
-        return converteEmReal(this.dolar);
+    public String getDolar() {
+        return  String.format("%6.3E",converteEmReal(this.dolar));
     }
 
-    public Double getReal() {
-        return real;
+    public String getReal() {
+        return String.format("%6.3E", this.real);
     }
 
-    public Double getBitcoin() {
-        return converteEmReal(bitcoin);
+    public String getBitcoin() {
+        return String.format("%6.3E",converteEmReal(this.bitcoin));
     }
 
     public String getBase() {
-        return "Real";
+        return baseReal;
     }
 
     public String getData() {
