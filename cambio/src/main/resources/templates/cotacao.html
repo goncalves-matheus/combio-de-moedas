@@ -31,9 +31,14 @@
                     </ul>
                 </div>
                 <div>
-                    <form action="cotacao" method="POST" class="form-inline my-2 my-lg-0">
-                        <input name="buscarData" class="form-control mr-sm-2" type="search" placeholder="dd/mm/aaaa" aria-label="Buscar Data">
-                        <button class="justify-content-end btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    <form action="cotacao" method="POST" class="form-floating mt-3 row justify-content-md-end">
+                        <div class="col-8">
+                            <input name="buscarData" id="data" class="form-control" placeholder="dd/mm/aaaa" span="dd/mm/aaaa">
+                            <label class="textoData" for="data">Busque uma Data</label>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-outline-success " type="submit">Buscar</button>
+                        </div>
                     </form>
                 </div>
             </nav>
