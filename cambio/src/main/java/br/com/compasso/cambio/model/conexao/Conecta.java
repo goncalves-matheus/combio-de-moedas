@@ -17,17 +17,21 @@ public class Conecta {
         conexao.setRequestProperty("Accept", "application/json");
         return conexao;
     }
+
     public HttpURLConnection conectar(String data) throws IOException{
-        DateTimeFormatter formatadorEntrada = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        DateTimeFormatter formatadorBrasil = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        try {
+            DateTimeFormatter formatadorEntrada = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter formatadorBrasil = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        LocalDate dataAProcurar = LocalDate.parse(data,formatadorBrasil);
-
-        URL url = new URL("http://data.fixer.io/api/"+dataAProcurar.format(formatadorEntrada)+"?access_key=c8d07190c602ddb54470123b47b5c554&symbols=USD,BRL,BTC&base=EUR");
-        HttpURLConnection conexao = (HttpURLConnection)url.openConnection();
-
-        conexao.setRequestMethod("GET");
-        conexao.setRequestProperty("Accept", "application/json");
-        return conexao;
+            LocalDate dataAProcurar = LocalDate.parse(data,formatadorBrasil);
+            URL url = new URL("http://data.fixer.io/api/"+dataAProcurar.format(formatadorEntrada)+"?access_key=c8d07190c602ddb54470123b47b5c554&symbols=USD,BRL,BTC&base=EUR");
+            HttpURLConnection conexao = (HttpURLConnection)url.openConnection();
+    
+            conexao.setRequestMethod("GET");
+            conexao.setRequestProperty("Accept", "application/json");
+            return conexao;
+        } catch (Exception e) {
+            return conectar();
+        }
     }
 }
