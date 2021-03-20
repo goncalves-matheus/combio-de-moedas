@@ -15,6 +15,8 @@ public class Cotacao {
     String realImagem = "https://exame.com/wp-content/uploads/2020/05/gettyimages-1196644462.jpg";
     String dolarImagem = "https://exame.com/wp-content/uploads/2020/11/dc2b4c3b3lar.jpg";
 
+    private static final String FORMATODINHEIRO = "R$ %.2f";
+
     DateTimeFormatter formatadorEntrada = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     DateTimeFormatter formatadorBrasil = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -31,15 +33,15 @@ public class Cotacao {
     }
 
     public String getDolar() {
-        return  String.format("%6.3E",converteEmReal(this.dolar));
+        return  String.format(FORMATODINHEIRO,converteEmReal(this.dolar));
     }
 
     public String getReal() {
-        return String.format("%6.3E", this.real);
+        return String.format(FORMATODINHEIRO,this.real);
     }
 
     public String getBitcoin() {
-        return String.format("%6.3E",converteEmReal(this.bitcoin));
+        return String.format(FORMATODINHEIRO,converteEmReal(this.bitcoin));
     }
 
     public String getBase() {
