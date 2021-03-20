@@ -23,7 +23,11 @@ public class Conecta {
             DateTimeFormatter formatadorEntrada = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             DateTimeFormatter formatadorBrasil = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+            LocalDate dataLimite = LocalDate.of(2012, 12, 30);
             LocalDate dataAProcurar = LocalDate.parse(data,formatadorBrasil);
+            if(dataAProcurar.isBefore(dataLimite)){
+                return conectar();
+            }
             URL url = new URL("http://data.fixer.io/api/"+dataAProcurar.format(formatadorEntrada)+"?access_key=c8d07190c602ddb54470123b47b5c554&symbols=USD,BRL,BTC&base=EUR");
             HttpURLConnection conexao = (HttpURLConnection)url.openConnection();
     
