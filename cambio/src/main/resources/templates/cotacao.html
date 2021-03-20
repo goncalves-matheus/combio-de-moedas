@@ -1,64 +1,92 @@
-<html>
-    <head>  
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
         <meta charset="UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <title>Cambio de Moedas</title>
+        <link rel="stylesheet" type="text/css" th:href="style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     </head>
-    <body>
-        <div class="container bg-dark">
-            <div class="card bg-dark text-white">
-                <div class= "card-header">Cambio de Moedas</div>
-            </div>
-            
+
+    <body class="principal">
+        <div  class="container bg-dark">
+
+            <nav class="container navbar navbar-expand-lg navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <a class="navbar-brand" href="#">Cambio de Moedas</a>
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Hoje</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">lorem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">sobre</a>
+                        </li>
+                    </ul>
+                </div>
+                <form action="cotacao" method="POST" class="form-inline my-2 my-lg-0">
+                    <input name="buscarData" class="form-control mr-sm-2" type="search" placeholder="dd/mm/aaaa" aria-label="Buscar Data">
+                    <button class="justify-content-end btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+               <!--  <div>
+                    <button class="justify-content-end btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </div> -->
+            </nav>
+
             <div class="row">
-
                 <div class="card bg-success text-white col-4">
-                    <div class= "card-header">Dólar:</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div>Valor: <span th:text="${cotacao.getDolar}">1.0000</span></div>
-                                    <div>Base: <span th:text="${cotacao.getBase}">1.0000</span></div>
-                                    <div>Data: <span th:text="${cotacao.getData}">1.0000</span></div>
-                                </div>
-                                <div class="col-6">
-                                        <img th:src="${cotacao.getDolarImagem}" src="" class="card-img" alt="..."/>
-                                </div>     
+                    <div class="card-header">Dólar:</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div>Valor: <span th:text="${cotacao.getDolar}">1.0000</span></div>
+                                <div>Base: <span th:text="${cotacao.getBase}">1.0000</span></div>
+                                <div>Data: <span th:text="${cotacao.getData}">1.0000</span></div>
+                            </div>
+                            <div class="col-6">
+                                <img th:src="${cotacao.getDolarImagem}" src="" class="card-img" alt="..." />
                             </div>
                         </div>
-                </div> 
+                    </div>
+                </div>
 
                 <div class="card bg-success text-white col-4">
-                    <div class= "card-header">Euro:</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div>Valor: <span th:text="${cotacao.getReal}">1.0000</span></div>
-                                    <div>Base: <span th:text="${cotacao.getBase}">1.0000</span></div>
-                                    <div>Data: <span th:text="${cotacao.getData}">1.0000</span></div>
-                                </div>
-                                <div class="col-6">
-                                        <img th:src="${cotacao.getRealImagem}" src="" class="card-img" alt="..."/>
-                                </div>     
+                    <div class="card-header">Euro:</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div>Valor: <span th:text="${cotacao.getReal}">1.0000</span></div>
+                                <div>Base: <span th:text="${cotacao.getBase}">1.0000</span></div>
+                                <div>Data: <span th:text="${cotacao.getData}">1.0000</span></div>
+                            </div>
+                            <div class="col-6">
+                                <img th:src="${cotacao.getRealImagem}" src="" class="card-img" alt="..." />
                             </div>
                         </div>
-                </div> 
+                    </div>
+                </div>
 
                 <div class="card bg-success text-white col-4">
-                    <div class= "card-header">Bitcoin:</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div>Valor: <span th:text="${cotacao.getBitcoin}">1.0000</span></div>
-                                    <div>Base: <span th:text="${cotacao.getBase}">1.0000</span></div>
-                                    <div>Data: <span th:text="${cotacao.getData}">1.0000</span></div>
-                                </div>
-                                <div class="col-6">
-                                        <img th:src="${cotacao.getBitcoinImagem}" src="" class="card-img" alt="..."/>
-                                </div>     
+                    <div class="card-header">Bitcoin:</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div>Valor: <span th:text="${cotacao.getBitcoin}">1.0000</span></div>
+                                <div>Base: <span th:text="${cotacao.getBase}">1.0000</span></div>
+                                <div>Data: <span th:text="${cotacao.getData}">1.0000</span></div>
+                            </div>
+                            <div class="col-6">
+                                <img th:src="${cotacao.getBitcoinImagem}" src="" class="card-img" alt="..." />
                             </div>
                         </div>
-                </div> 
-
+                    </div>
+                </div>
             </div>
         </div>
     </body>

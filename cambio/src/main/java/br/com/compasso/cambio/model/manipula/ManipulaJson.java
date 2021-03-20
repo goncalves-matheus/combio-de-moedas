@@ -32,4 +32,25 @@ public class ManipulaJson {
         novaConexao.disconnect();
         return cotacao;
     }
+    public static Cotacao lerJson(String buscarData) throws IOException{
+        HttpURLConnection novaConexao = new Conecta().conectar(buscarData);
+        BufferedReader entrada = new BufferedReader(new InputStreamReader(novaConexao.getInputStream()));
+    
+        StringBuilder resposta = new StringBuilder();
+
+        String linha;
+        while ((linha = entrada.readLine()) != null) {
+            resposta.append(linha);
+        }
+
+        entrada.close();
+
+        JSONObject json = new JSONObject(resposta.toString());
+        JSONObject ratesJson = new JSONObject(json.getJSONObject("rates").toString());
+        
+        Cotacao cotacao = new Cotacao(ratesJson.getDouble("USD"), ratesJson.getDouble("BRL"), ratesJson.getDouble("BTC"),
+                                         json.getString("base"), json.getString("date"));
+        novaConexao.disconnect();
+        return cotacao;
+    }
 }

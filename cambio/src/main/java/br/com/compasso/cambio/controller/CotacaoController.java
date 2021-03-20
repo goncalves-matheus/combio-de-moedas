@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.compasso.cambio.model.manipula.ManipulaJson;
@@ -17,6 +18,15 @@ public class CotacaoController {
     public String listar(Model model){
          try {
             model.addAttribute(ManipulaJson.lerJson());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "cotacao";
+    }
+    @PostMapping()
+    public String procurar(String buscarData, Model model){
+        try {
+            model.addAttribute(ManipulaJson.lerJson(buscarData));
         } catch (IOException e) {
             e.printStackTrace();
         }
