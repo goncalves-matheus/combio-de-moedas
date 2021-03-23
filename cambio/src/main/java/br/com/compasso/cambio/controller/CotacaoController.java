@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.compasso.cambio.model.manipula.ManipulaJson;
+import br.com.compasso.cambio.model.json.JsonBuscarData;
+import br.com.compasso.cambio.model.json.JsonPadrao;
 
 @Controller
 @RequestMapping("/cotacao")
@@ -17,7 +18,7 @@ public class CotacaoController {
     @GetMapping
     public String listar(Model model){
          try {
-            model.addAttribute(ManipulaJson.lerJson());
+            model.addAttribute(new JsonPadrao().novaLeitura());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -26,7 +27,7 @@ public class CotacaoController {
     @PostMapping()
     public String procurar(String buscarData, Model model){
         try {
-            model.addAttribute(ManipulaJson.lerJson(buscarData));
+            model.addAttribute(new JsonBuscarData().novaLeitura(buscarData));
         } catch (IOException e) {
             e.printStackTrace();
         }

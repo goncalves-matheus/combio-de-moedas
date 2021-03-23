@@ -1,4 +1,4 @@
-package br.com.compasso.cambio.model.manipula;
+package br.com.compasso.cambio.model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -26,7 +26,7 @@ public class Cotacao {
         this.bitcoin = bitcoin;
         this.data = LocalDate.parse(data,formatadorEntrada);
     }
-    public Cotacao(Double dolar, Double real, Double bitcoin, String data, Double novaMoeda, String siglaNovaMoeda) {
+    public Cotacao(Double dolar, Double real, Double bitcoin, String data, Double novaMoeda, String siglaNovaMoeda){
         this.dolar = dolar;
         this.real = real;
         this.bitcoin = bitcoin;
