@@ -36,7 +36,7 @@
                     <div class="col-8">
                         <input name="buscarData" id="data" class="form-control" placeholder="dd/mm/aaaa"
                             span="dd/mm/aaaa">
-                        <label class="textoData" for="data">Busque uma Data</label>
+                        <small class="textoData" for="data">Busque uma Data</small>
                     </div>
                     <div class="col-4">
                         <button class="btn btn-outline-success " type="submit">Buscar</button>
@@ -105,9 +105,17 @@
             </div>
             <div class="container-fluid">
                 <a class="navbar-brand">Procure uma moeda</a>
-                <form action="moeda" method="POST" class="d-flex">
-                    <input name="buscarMoeda" id="moeda" class="form-control" placeholder="BRL" span="BRL">
-                    <button class="btn btn-outline-success " type="submit">Buscar</button>
+                <form action="moeda" method="POST" class="d-flex row">
+                    <div class="col-8">
+                        <input name="buscarMoeda" id="data" class="form-control" placeholder="Brazil"
+                            span="dd/mm/aaaa">
+                        <small class="textoData" for="data">Busque um País (em inglês)</small>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-outline-success " type="submit">Buscar</button>
+                    </div>
+<!--                     <input name="buscarMoeda" id="moeda" class="form-control" placeholder="BRL" span="BRL">
+                    <button class="btn btn-outline-success " type="submit">Buscar</button> -->
                 </form>
             </div>
         </nav>
@@ -121,11 +129,6 @@
                         <div>Valor: <span th:text="${cotacao.getNovaMoeda}">1.0000</span></div>
                         <div>Base: <span th:text="${cotacao.getBase}">1.0000</span></div>
                         <div>Data: <span th:text="${cotacao.getData}">1.0000</span></div>
-
-                        <!-- <div>País: <span th:text="${cotacao.getData}">1.0000</span></div>
-                            <div>Moeda: <span th:text="${cotacao.getData}">1.0000</span></div>
-                            <div>Menor Unidade: <span th:text="${cotacao.getData}">1.0000</span></div> -->
-
                     </div>
                     <div class="col-3">
                         <img th:src="${cotacao.getNovaMoedaImagem}" src="" class="card-img" alt="..." />
