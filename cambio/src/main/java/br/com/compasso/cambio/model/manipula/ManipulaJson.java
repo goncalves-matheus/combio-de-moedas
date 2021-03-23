@@ -7,24 +7,29 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import br.com.compasso.cambio.model.conexao.Conecta;
+import br.com.compasso.cambio.model.conexao.ConexaoNovaData;
+import br.com.compasso.cambio.model.conexao.ConexaoNovaMoeda;
+import br.com.compasso.cambio.model.conexao.ConexaoPadrao;
 
 public class ManipulaJson {
+
+    private ManipulaJson(){
+        throw new IllegalStateException("Utility class");
+    }
     
     public static Cotacao lerJson() throws IOException{
-        return criarObjetoCotacao(new Conecta().conectar());
+        return criarObjetoCotacao(new ConexaoPadrao().novaConexao());
     }
 
     public static Cotacao lerJson(String buscarData) throws IOException{
-        return criarObjetoCotacao(new Conecta().conectar(buscarData));
+        return criarObjetoCotacao(new ConexaoNovaData().novaConexao(buscarData));
     }
 
     public static Cotacao lerJsonNovaMoeda(String buscarMoeda) throws IOException {
         try{
-            HttpURLConnection novaConexao = new Conecta().conectarNovaMoeda(buscarMoeda);
+            HttpURLConnection novaConexao = new ConexaoNovaMoeda().novaConexao(buscarMoeda);
             BufferedReader entrada = new BufferedReader(new InputStreamReader(novaConexao.getInputStream()));
             StringBuilder resposta = new StringBuilder();
     
@@ -45,7 +50,6 @@ public class ManipulaJson {
         } catch (Exception e) {
             return lerJson();
         }
-        
     }
 
     private static Cotacao criarObjetoCotacao(HttpURLConnection novaConexao) throws IOException {
@@ -91,7 +95,6 @@ public class ManipulaJson {
             return lerJson();
         } catch (Exception e) {
             lerJson();
-            System.out.println("Deu erro aqui!");
             return lerJson();  
         } 
     }
