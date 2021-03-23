@@ -17,7 +17,7 @@ public class Cotacao {
     private String dolarImagem = "https://exame.com/wp-content/uploads/2020/11/dc2b4c3b3lar.jpg";
     private String novaMoedaImagem = "https://image.freepik.com/fotos-gratis/dinheiro-de-diferentes-paises-dolares-euros-hryvnia-rublos_104376-255.jpg";
 
-    private static final String FORMATODINHEIRO = "R$ %.2f";
+    private static final String FORMATODINHEIRO = "R$ %.3f";
     private DateTimeFormatter formatadorEntrada = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public Cotacao(Double dolar, Double real, Double bitcoin, String data) {
