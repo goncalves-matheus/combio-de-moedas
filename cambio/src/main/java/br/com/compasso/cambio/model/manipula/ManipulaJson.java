@@ -1,10 +1,13 @@
 package br.com.compasso.cambio.model.manipula;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import br.com.compasso.cambio.model.conexao.Conecta;
@@ -65,4 +68,31 @@ public class ManipulaJson {
         return cotacao;
     }
 
+    public static Cotacao lerJsonPaises(String nomePais) throws IOException {
+        try {
+            BufferedReader entrada = new BufferedReader(new FileReader("cambio/src/main/resources/country-by-currency-code.json"));
+            StringBuilder resposta = new StringBuilder();
+
+            String linha;
+            while ((linha = entrada.readLine()) != null) {
+                resposta.append(linha);
+            }
+
+            entrada.close();
+
+            JSONArray arrayDePaises = new JSONArray(resposta.toString());
+        
+            for(int i = 0; i < arrayDePaises.length(); i ++){
+                JSONObject objeto = arrayDePaises.getJSONObject(i);
+                if(nomePais.equals(objeto.getString("country"))){
+                    return lerJsonNovaMoeda(objeto.getString("currency_code"));
+                }
+            }
+            return lerJson();
+        } catch (Exception e) {
+            lerJson();
+            System.out.println("Deu erro aqui!");
+            return lerJson();  
+        } 
+    }
 }
