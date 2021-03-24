@@ -33,7 +33,6 @@ public class LeituraJsonListaDePaises {
             }
             return new JsonPadrao().novaLeitura();
         } catch (Exception e) {
-            new JsonPadrao().novaLeitura();
             return new JsonPadrao().novaLeitura();  
         } 
     }
