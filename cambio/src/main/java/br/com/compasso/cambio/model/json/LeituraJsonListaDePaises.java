@@ -27,7 +27,7 @@ public class LeituraJsonListaDePaises {
         
             for(int i = 0; i < arrayDePaises.length(); i ++){
                 JSONObject objeto = arrayDePaises.getJSONObject(i);
-                if(nomePais.equals(objeto.getString("country"))){
+                if(nomePais.equalsIgnoreCase(objeto.getString("country"))){
                     return new JsonNovaMoeda().novaLeitura(objeto.getString("currency_code"));
                 }
             }
