@@ -12,17 +12,14 @@ import br.com.compasso.cambio.model.Cotacao;
 public class LeituraJsonListaDePaises {
     
     public Cotacao novaLeitura(String nomePais) throws IOException {
-        try {
-            BufferedReader entrada = new BufferedReader(new FileReader("cambio/src/main/resources/country-by-currency-code.json"));
+        try (BufferedReader entrada = new BufferedReader(new FileReader("cambio/src/main/resources/country-by-currency-code.json"))) {
             StringBuilder resposta = new StringBuilder();
 
             String linha;
             while ((linha = entrada.readLine()) != null) {
                 resposta.append(linha);
             }
-
-            entrada.close();
-
+            
             JSONArray arrayDePaises = new JSONArray(resposta.toString());
         
             for(int i = 0; i < arrayDePaises.length(); i ++){

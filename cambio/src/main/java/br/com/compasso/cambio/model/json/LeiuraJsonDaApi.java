@@ -21,20 +21,22 @@ public abstract class LeiuraJsonDaApi {
 
         JSONObject json = new JSONObject(resposta.toString());
         JSONObject ratesJson = new JSONObject(json.getJSONObject("rates").toString());
+        
         novaConexao.disconnect();
 
         return criarObjetoCotacao(json, ratesJson);
     }
 
     private StringBuilder criarStringBuilder(HttpURLConnection novaConexao) throws IOException {
-        BufferedReader entrada = new BufferedReader(new InputStreamReader(novaConexao.getInputStream()));
-        StringBuilder resposta = new StringBuilder();
-   
-        String linha;
-        while ((linha = entrada.readLine()) != null) {
-            resposta.append(linha);
+        try(BufferedReader entrada = new BufferedReader(new InputStreamReader(novaConexao.getInputStream()))){
+            
+            StringBuilder resposta = new StringBuilder();
+            String linha;
+
+            while ((linha = entrada.readLine()) != null) {
+                resposta.append(linha);
+            }
+            return resposta;
         }
-        entrada.close();
-        return resposta;
     }
 }
